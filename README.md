@@ -7,6 +7,9 @@ The system manages a list of contacts where authenticated users can perform the 
 
 All updates are synchronized across users to ensure consistency in the contact list.
 
+# Getting started
+> git clone https://github.com/hemdan-dev/ContactsSystem
+
 # Folders
 Each folder includes a README file with detailed requirements and installation instructions.
 
