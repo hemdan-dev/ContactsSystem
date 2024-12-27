@@ -1,0 +1,47 @@
+version: "3.9"  
+services:  
+  db:  
+    image: mongo:latest  
+    ports:  
+      - "27017:27017"  
+    volumes:  
+      - mongo_data:/data/db  
+    networks:  
+      - contactssystem-network  
+    healthcheck:  
+      test: echo 'db.runCommand("ping").ok' 
+      interval: 10s  
+      timeout: 5s  
+      retries: 5  
+
+  backend:  
+    build: ./backend  
+    ports:  
+      - "8000:8000"  
+    depends_on:  
+      db:  
+        condition: service_healthy  
+    environment:  
+      PORT: 8000  
+      MONGO_URI: mongodb://db:27017/contacts
+      JWT_SECRET: ghd53gfd
+    networks:  
+      - contactssystem-network  
+    command: >  
+      sh -c "npm run seed && npm start"
+
+  frontend:  
+    build: ./frontend  
+    ports:  
+      - "5000:5000" 
+    depends_on:  
+      db:  
+        condition: service_healthy  
+    networks:  
+      - contactssystem-network  
+
+networks:  
+  contactssystem-network:  
+
+volumes:  
+  mongo_data:  

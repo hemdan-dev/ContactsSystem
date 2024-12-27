@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json.schemastore.org/tsconfig",
+    "include": [
+      "src",
+      "./src/**/*"
+    ],
+    "exclude": [
+      "node_modules/**",
+      "packages/*/node_modules/**",
+      "**/*.d.ts"
+    ],
+    "compilerOptions": {
+      "outDir":"dist",
+      "target": "es2016",
+      "module": "CommonJS",
+      "strict": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "removeComments": true,
+      "alwaysStrict": true,
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "types": ["reflect-metadata"]
+    }
+}
+  
