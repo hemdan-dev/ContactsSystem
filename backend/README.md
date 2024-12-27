@@ -5,6 +5,9 @@
 
 # Installation
 
+Copy the env file and set your env data
+> cp .env.example .env
+
 Install deps
 > npm i
 
